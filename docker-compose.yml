@@ -1,0 +1,45 @@
+# Docker Compose for tiktrend
+# Full-stack container orchestration
+
+name: tiktrend
+
+services:
+  web:
+    build:
+      context: ./apps/web
+      dockerfile: Dockerfile
+    container_name: tiktrend-web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - tiktrend-network
+
+  db:
+    image: postgres:16-alpine
+    container_name: tiktrend-postgres
+    environment:
+      POSTGRES_DB: tiktrend
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - tiktrend_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - tiktrend-network
+
+networks:
+  tiktrend-network:
+    driver: bridge
+
+volumes:
+  tiktrend_postgres_data:

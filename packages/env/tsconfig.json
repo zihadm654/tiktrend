@@ -1,0 +1,3 @@
+{
+  "extends": "@tiktrend/config/tsconfig.base.json"
+}
