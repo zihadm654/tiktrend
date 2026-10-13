@@ -41,17 +41,33 @@ export default function UserMenu() {
           <DropdownMenuLabel>My Account</DropdownMenuLabel>
           <DropdownMenuSeparator />
           <DropdownMenuItem>{session.user.email}</DropdownMenuItem>
+          <DropdownMenuItem render={<Link href="/orders" />}>
+            My Orders
+          </DropdownMenuItem>
+          <DropdownMenuItem render={<Link href="/wishlist" />}>
+            Wishlist
+          </DropdownMenuItem>
+          {session.user.role === "admin" ? (
+            <>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem render={<Link href="/admin" />}>
+                Admin
+              </DropdownMenuItem>
+            </>
+          ) : null}
+          <DropdownMenuSeparator />
           <DropdownMenuItem
-            variant="destructive"
             onClick={() => {
               authClient.signOut({
                 fetchOptions: {
                   onSuccess: () => {
                     router.push("/");
+                    router.refresh();
                   },
                 },
               });
             }}
+            variant="destructive"
           >
             Sign Out
           </DropdownMenuItem>

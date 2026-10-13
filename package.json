@@ -1,6 +1,7 @@
 {
   "name": "tiktrend",
   "private": true,
+  "type": "module",
   "workspaces": {
     "packages": [
       "apps/*",
@@ -22,23 +23,26 @@
       "jsdom": "^29.1.1"
     }
   },
-  "type": "module",
   "scripts": {
-    "dev": "turbo dev",
     "build": "turbo build",
+    "check": "ultracite check",
     "check-types": "turbo check-types",
-    "dev:web": "turbo -F web dev",
-    "db:push": "turbo -F @tiktrend/db db:push",
-    "db:studio": "turbo -F @tiktrend/db db:studio",
     "db:generate": "turbo -F @tiktrend/db db:generate",
     "db:migrate": "turbo -F @tiktrend/db db:migrate",
-    "test": "bun run --filter web test && bun run --filter @tiktrend/api test",
-    "lint": "ultracite check",
-    "format": "ultracite fix",
-    "lint:doctor": "ultracite doctor",
-    "check": "ultracite check",
+    "db:push": "turbo -F @tiktrend/db db:push",
+    "db:seed": "turbo -F @tiktrend/db db:seed",
+    "db:studio": "turbo -F @tiktrend/db db:studio",
+    "dev": "turbo dev",
+    "dev:web": "turbo -F web dev",
     "fix": "ultracite fix",
-    "prepare": "husky"
+    "format": "ultracite fix",
+    "lint": "ultracite check",
+    "lint:doctor": "ultracite doctor",
+    "prepare": "husky",
+    "test": "bun run --filter web test && bun run --filter @tiktrend/api test"
+  },
+  "overrides": {
+    "kysely": "0.28.17"
   },
   "dependencies": {
     "@tiktrend/env": "workspace:*",
@@ -54,9 +58,6 @@
     "turbo": "2.10.11",
     "typescript": "^6.0.3",
     "ultracite": "8.0.0"
-  },
-  "overrides": {
-    "kysely": "0.28.17"
   },
   "packageManager": "bun@1.4.2"
 }

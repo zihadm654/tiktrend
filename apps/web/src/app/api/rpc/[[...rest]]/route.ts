@@ -5,7 +5,7 @@ import { RPCHandler } from "@orpc/server/fetch";
 import { ZodToJsonSchemaConverter } from "@orpc/zod/zod4";
 import { createContext } from "@tiktrend/api/context";
 import { appRouter } from "@tiktrend/api/routers/index";
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 const rpcHandler = new RPCHandler(appRouter, {
   interceptors: [
@@ -15,30 +15,34 @@ const rpcHandler = new RPCHandler(appRouter, {
   ],
 });
 const apiHandler = new OpenAPIHandler(appRouter, {
-  plugins: [
-    new OpenAPIReferencePlugin({
-      schemaConverters: [new ZodToJsonSchemaConverter()],
-    }),
-  ],
   interceptors: [
     onError((error) => {
       console.error(error);
+    }),
+  ],
+  plugins: [
+    new OpenAPIReferencePlugin({
+      schemaConverters: [new ZodToJsonSchemaConverter()],
     }),
   ],
 });
 
 async function handleRequest(req: NextRequest) {
   const rpcResult = await rpcHandler.handle(req, {
-    prefix: "/api/rpc",
     context: await createContext(req),
+    prefix: "/api/rpc",
   });
-  if (rpcResult.response) return rpcResult.response;
+  if (rpcResult.response) {
+    return rpcResult.response;
+  }
 
   const apiResult = await apiHandler.handle(req, {
-    prefix: "/api/rpc/api-reference",
     context: await createContext(req),
+    prefix: "/api/rpc/api-reference",
   });
-  if (apiResult.response) return apiResult.response;
+  if (apiResult.response) {
+    return apiResult.response;
+  }
 
   return new Response("Not found", { status: 404 });
 }

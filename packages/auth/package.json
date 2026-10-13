@@ -1,8 +1,6 @@
 {
   "name": "@tiktrend/auth",
   "type": "module",
-  "main": "./src/index.ts",
-  "types": "./src/index.ts",
   "exports": {
     ".": {
       "default": "./src/index.ts"
@@ -11,6 +9,8 @@
       "default": "./src/*.ts"
     }
   },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "scripts": {
     "check-types": "tsc --noEmit"
   },

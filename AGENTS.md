@@ -133,6 +133,18 @@ Biome (the underlying engine) provides robust linting and formatting. Most issue
 
 ---
 
+## Project-specific rule overrides
+
+`biome.jsonc` carries a few deliberate deviations from the Ultracite preset. Keep them in mind before adding new suppressions:
+
+- **`noJsxPropsBind` is `off` globally.** Ultracite enables it as an error, but it rejects *any* handler passed as a JSX prop unless it is wrapped in `useCallback` or declared at module scope — including the scaffold's own components (`mode-toggle`, `user-menu`, `login-tabs`, `sign-in-form`, `sign-up-form`) and idiomatic inline handlers in row/list `map` callbacks. React 19's compiler memoises handlers, so re-enabling this rule would mean churning ~25 files for no runtime benefit.
+- **`.agents/**` is excluded from linting**, alongside the broken skill symlinks `.claude`, `.opencode`, and `.qoder`. These hold hash-locked third-party skills (see `skills-lock.json`), not project code.
+- **`noNamespaceImport` is `warn`, not `error`.** Namespace imports are required by drizzle schema and better-auth plugin APIs.
+- **`noUnnecessaryConditions` is type-aware** (Biome domain `types`) and currently misfires on TanStack Query results: it infers `isPending`/`isLoading` as always `false`. Use the equivalent `query.status === "pending"` instead of `query.isPending` in conditions.
+- **`noAwaitInLoops`** rejects `await` inside loops. Sequential DB work inside a transaction (stock arithmetic) is intentional — annotate those loops with a short `// biome-ignore lint/performance/noAwaitInLoops: <reason>` rather than parallelising writes on one connection.
+
+---
+
 ## Core Principles
 
 Write code that is **accessible, performant, type-safe, and maintainable**. Focus on clarity and explicit intent over brevity.

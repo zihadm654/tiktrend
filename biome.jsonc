@@ -1,4 +1,49 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-  "extends": ["ultracite/biome/core", "ultracite/biome/next"],
+  "files": {
+    "includes": [
+      "!!**/.agents",
+      "!!**/.claude",
+      "!!**/.opencode",
+      "!!**/.qoder"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noParametersOnlyUsedInRecursion": "off"
+      },
+      "performance": {
+        "noBarrelFile": "off",
+        // Ultracite enables this as an error, but it flags every handler passed
+        // as a JSX prop unless it is wrapped in `useCallback`. The scaffold's own
+        // components (mode-toggle, user-menu, login-tabs, auth forms) pass inline
+        // handlers, and React 19's compiler memoises handlers for us.
+        "noJsxPropsBind": "off",
+        "noNamespaceImport": "warn"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["apps/web/src/components/ui/**"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noLabelWithoutControl": "off",
+            "noNoninteractiveElementInteractions": "off",
+            "noRedundantRoles": "off",
+            "useFocusableInteractive": "off",
+            "useKeyWithClickEvents": "off",
+            "useSemanticElements": "off"
+          },
+          "suspicious": {
+            "noDoubleEquals": "off",
+            "noUnnecessaryConditions": "off"
+          }
+        }
+      }
+    }
+  ],
+  "extends": ["ultracite/biome/core", "ultracite/biome/next"]
 }

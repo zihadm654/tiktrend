@@ -7,8 +7,9 @@ export const logger = createLogger({
   level: logLevel,
 });
 
-export function logEvent<T extends Record<string, unknown>>(event: string, payload?: T): void {
+export function logEvent<T extends Record<string, unknown>>(
+  event: string,
+  payload?: T
+): void {
   logger.info(event, payload);
 }
-
-export default logger;

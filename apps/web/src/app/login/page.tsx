@@ -1,16 +1,22 @@
-"use client";
+import type { Metadata } from "next";
 
-import { useState } from "react";
+import { LoginTabs } from "@/components/login-tabs";
 
-import SignInForm from "@/components/sign-in-form";
-import SignUpForm from "@/components/sign-up-form";
+export const metadata: Metadata = {
+  description:
+    "Sign in to place a Cash on Delivery order and track your watches.",
+  title: "Sign in · TikTrend",
+};
 
-export default function LoginPage() {
-  const [showSignIn, setShowSignIn] = useState(false);
+interface LoginPageProps {
+  searchParams: Promise<{ next?: string | string[] }>;
+}
 
-  return showSignIn ? (
-    <SignInForm onSwitchToSignUp={() => setShowSignIn(false)} />
-  ) : (
-    <SignUpForm onSwitchToSignIn={() => setShowSignIn(true)} />
-  );
+export default async function LoginPage({ searchParams }: LoginPageProps) {
+  const params = await searchParams;
+  const rawNext = Array.isArray(params.next) ? params.next[0] : params.next;
+  // Only allow same-origin relative paths to avoid open redirects.
+  const next = rawNext?.startsWith("/") ? rawNext : undefined;
+
+  return <LoginTabs next={next} />;
 }

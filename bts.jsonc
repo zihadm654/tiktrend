@@ -33,7 +33,7 @@
     "backend.logging": "typescript:evlog",
     "backend.ai": "typescript:tanstack-ai",
     "backend.validation": "typescript:zod",
-    "backend.testing": "typescript:vitest",
+    "backend.testing": "typescript:vitest"
   },
   "ecosystem": "typescript",
   "database": "postgres",
@@ -51,7 +51,7 @@
     "github-actions",
     "tanstack-virtual",
     "tanstack-table",
-    "tanstack-pacer",
+    "tanstack-pacer"
   ],
   "examples": [],
   "auth": "better-auth",
@@ -209,7 +209,7 @@
       "toolId": "next",
       "ecosystem": "typescript",
       "source": "selected",
-      "targetPath": "apps/web",
+      "targetPath": "apps/web"
     },
     {
       "id": "backend:typescript:self",
@@ -217,7 +217,7 @@
       "toolId": "self",
       "ecosystem": "typescript",
       "source": "selected",
-      "targetPath": "apps/server",
+      "targetPath": "apps/server"
     },
     {
       "id": "database:universal:postgres",
@@ -225,7 +225,7 @@
       "toolId": "postgres",
       "ecosystem": "universal",
       "source": "selected",
-      "targetPath": "packages/db",
+      "targetPath": "packages/db"
     },
     {
       "id": "database:universal:postgres.dbsetup:universal:neon",
@@ -233,56 +233,56 @@
       "toolId": "neon",
       "ecosystem": "universal",
       "ownerPartId": "database:universal:postgres",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "codequality:universal:ultracite",
       "role": "codeQuality",
       "toolId": "ultracite",
       "ecosystem": "universal",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "githooks:universal:husky",
       "role": "gitHooks",
       "toolId": "husky",
       "ecosystem": "universal",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "documentation:universal:starlight",
       "role": "documentation",
       "toolId": "starlight",
       "ecosystem": "universal",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "workspacerunner:universal:turborepo",
       "role": "workspaceRunner",
       "toolId": "turborepo",
       "ecosystem": "universal",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "developerenvironment:universal:devcontainer",
       "role": "developerEnvironment",
       "toolId": "devcontainer",
       "ecosystem": "universal",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "containerorchestration:universal:docker-compose",
       "role": "containerOrchestration",
       "toolId": "docker-compose",
       "ecosystem": "universal",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "continuousintegration:universal:github-actions",
       "role": "continuousIntegration",
       "toolId": "github-actions",
       "ecosystem": "universal",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.libraries:typescript:tanstack-virtual",
@@ -290,7 +290,7 @@
       "toolId": "tanstack-virtual",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.libraries:typescript:tanstack-table",
@@ -298,7 +298,7 @@
       "toolId": "tanstack-table",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.libraries:typescript:tanstack-pacer",
@@ -306,7 +306,7 @@
       "toolId": "tanstack-pacer",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "backend:typescript:self.orm:typescript:drizzle",
@@ -314,7 +314,7 @@
       "toolId": "drizzle",
       "ecosystem": "typescript",
       "ownerPartId": "backend:typescript:self",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "backend:typescript:self.api:typescript:orpc",
@@ -322,7 +322,7 @@
       "toolId": "orpc",
       "ecosystem": "typescript",
       "ownerPartId": "backend:typescript:self",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "backend:typescript:self.auth:typescript:better-auth",
@@ -330,7 +330,7 @@
       "toolId": "better-auth",
       "ecosystem": "typescript",
       "ownerPartId": "backend:typescript:self",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.deploy:typescript:docker",
@@ -338,7 +338,7 @@
       "toolId": "docker",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.css:typescript:tailwind",
@@ -346,7 +346,7 @@
       "toolId": "tailwind",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.ui:typescript:shadcn-ui",
@@ -362,8 +362,8 @@
         "shadcnColorTheme": "neutral",
         "shadcnBaseColor": "neutral",
         "shadcnFont": "geist",
-        "shadcnRadius": "medium",
-      },
+        "shadcnRadius": "medium"
+      }
     },
     {
       "id": "frontend:typescript:next.forms:typescript:tanstack-form",
@@ -371,7 +371,7 @@
       "toolId": "tanstack-form",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.statemanagement:typescript:zustand",
@@ -379,7 +379,7 @@
       "toolId": "zustand",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "frontend:typescript:next.animation:typescript:framer-motion",
@@ -387,7 +387,7 @@
       "toolId": "framer-motion",
       "ecosystem": "typescript",
       "ownerPartId": "frontend:typescript:next",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "backend:typescript:self.logging:typescript:evlog",
@@ -395,7 +395,7 @@
       "toolId": "evlog",
       "ecosystem": "typescript",
       "ownerPartId": "backend:typescript:self",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "backend:typescript:self.ai:typescript:tanstack-ai",
@@ -403,7 +403,7 @@
       "toolId": "tanstack-ai",
       "ecosystem": "typescript",
       "ownerPartId": "backend:typescript:self",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "backend:typescript:self.validation:typescript:zod",
@@ -411,7 +411,7 @@
       "toolId": "zod",
       "ecosystem": "typescript",
       "ownerPartId": "backend:typescript:self",
-      "source": "selected",
+      "source": "selected"
     },
     {
       "id": "backend:typescript:self.testing:typescript:vitest",
@@ -419,7 +419,7 @@
       "toolId": "vitest",
       "ecosystem": "typescript",
       "ownerPartId": "backend:typescript:self",
-      "source": "selected",
-    },
-  ],
+      "source": "selected"
+    }
+  ]
 }

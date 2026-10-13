@@ -1,9 +1,8 @@
-import type { AppRouterClient } from "@tiktrend/api/routers/index";
-
 import { createORPCClient } from "@orpc/client";
 import { RPCLink } from "@orpc/client/fetch";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
 import { QueryCache, QueryClient } from "@tanstack/react-query";
+import type { AppRouterClient } from "@tiktrend/api/routers/index";
 import { toast } from "sonner";
 
 export const queryClient = new QueryClient({
@@ -20,7 +19,6 @@ export const queryClient = new QueryClient({
 });
 
 export const link = new RPCLink({
-  url: `${typeof window !== "undefined" ? window.location.origin : "http://localhost:3001"}/api/rpc`,
   fetch(url, options) {
     return fetch(url, {
       ...options,
@@ -35,6 +33,7 @@ export const link = new RPCLink({
     const { headers } = await import("next/headers");
     return Object.fromEntries(await headers());
   },
+  url: `${typeof window === "undefined" ? "http://localhost:3001" : window.location.origin}/api/rpc`,
 });
 
 export const client: AppRouterClient = createORPCClient(link);
