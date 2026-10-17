@@ -4,12 +4,28 @@
     "web": {
       "root": "apps/web",
       "framework": "nextjs"
+    },
+    "api": {
+      "root": "packages/api",
+      "framework": "nextjs"
+    },
+    "env": {
+      "root": "packages/env",
+      "runtime": "node"
     }
   },
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": {
+        "service": "api"
+      }
+    },
+    {
       "source": "/(.*)",
-      "destination": { "service": "web" }
+      "destination": {
+        "service": "web"
+      }
     }
   ]
 }
